@@ -1,6 +1,6 @@
 package org.example;
 
-class Cat {
+public class Cat implements Participant {
     String name;
     int maxRunDistance;
     int maxJumpHeight;
@@ -11,19 +11,18 @@ class Cat {
         this.maxJumpHeight = maxJumpHeight;
     }
 
-    void run(int distance) {
-        if (distance <= maxRunDistance) {
-            System.out.println(name + " пробежал " + distance + " м.");
-        } else {
-            System.out.println(name + " не пробежал " + distance + " м.");
-        }
+    @Override
+    public String getName() {
+        return name;
     }
 
-    void jump(int height) {
-        if (height <= maxJumpHeight) {
-            System.out.println(name + " перепрыгнул стену высотой " + height + " м.");
-        } else {
-            System.out.println(name + " не перепрыгнул стену высотой " + height + " м.");
-        }
+    @Override
+    public int getMaxRunDistance() {
+        return maxRunDistance;
+    }
+
+    @Override
+    public int getMaxJumpHeight() {
+        return maxJumpHeight;
     }
 }

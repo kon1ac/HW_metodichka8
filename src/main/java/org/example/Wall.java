@@ -1,22 +1,27 @@
 package org.example;
 
-class Wall {
+public class Wall extends AbstractObstacle {
     int height;
 
     Wall(int height) {
         this.height = height;
     }
 
-    void overcome(Object participant) {
-        if (participant instanceof Human) {
-            Human human = (Human) participant;
-            human.jump(height);
-        } else if (participant instanceof Cat) {
-            Cat cat = (Cat) participant;
-            cat.jump(height);
-        } else if (participant instanceof Robot) {
-            Robot robot = (Robot) participant;
-            robot.jump(height);
+    @Override
+    public boolean overcome(Participant participant) {
+        System.out.print("  " + participant.getName() + " пытается перепрыгнуть стену " + height + " м. - ");
+
+        if (height <= participant.getMaxJumpHeight()) {
+            System.out.println("успешно");
+            return true;
+        } else {
+            System.out.println("не смог");
+            return false;
         }
+    }
+
+    @Override
+    public void printInfo() {
+        System.out.println("Стена: " + height + " м.");
     }
 }
